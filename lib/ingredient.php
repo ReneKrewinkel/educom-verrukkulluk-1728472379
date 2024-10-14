@@ -18,6 +18,7 @@ class ingredient {
         $sql = "select * from ingredieent where gerecht_id = $gerecht_id";
         $result = mysqli_query($this->connection, $sql);
         
+        $collection_ingredients = [];
         if ($result -> num_rows > 0) {
             while ($ingredient = $result->fetch_assoc()){
                 # Makes the result readable
@@ -25,10 +26,24 @@ class ingredient {
 
                 # Uses the private function to obtain alle articles
                 $artData = $this -> GetArticle($ingredient["artikel_id"]);
+
+                # Leave out "id" from artiekelen
+                $desired_columns = ["naam", "omschrijving", "prijs", "eenheid", "verpakking", "calorieen"];
+                $filtered_row = [];
+
+                foreach ($desired_columns as $column) {
+                    $filtered_row[$column] = $artData[$column];
+                }
                 
-                # Collects all ingredients and articles
-                $collection_ingredients[] = [$ingredient, $artData];
+                /* 
+                of vanaf $filtered_row:
+                 $filtered_row = ["naam" => $artData["naam"], ...];
+                */
+
+                $merged_array = array_merge($ingredient, $filtered_row);
+                $collection_ingredients[] = $merged_array;
             }
+            
         }
         return($collection_ingredients);
 
