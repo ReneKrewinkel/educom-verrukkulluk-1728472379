@@ -1,46 +1,38 @@
 <?php
 
-require_once("lib/user.php");
+#require_once("lib/user.php");
 class BFOW {
     
     private $connection;
-    private $db;
     private $use;
 
     public function __construct($connection) {
         # Establishes a connection with the database and the artikel class
         $this -> connection = $connection;
-        $this -> db = new database();
-        $this -> use = new user($this -> db->getConnection());
+        $this -> use = new user($this -> connection);
     }
 
-    # Deze haalt alle info op
-    public function selecteerBFOW($gerechtOrUser_id, $BFOW) {
-        // $sql = "select * from gerecht_info where record_type = '$BFOW' and ";
-        // if ($BFOW != "F") {
-        //     $sql .= "gerecht_id = $gerechtOrUser_id";
-        // } else {
-        //     $sql .= "user_id = '$gerechtOrUser_id'";
-        // }
-        $sql = "select * from gerecht_info where record_type = '$BFOW' and gerecht_id = $gerechtOrUser_id";
+    # Function to retrieve all data
+    public function selecteerBFOW($gerecht_id, $BFOW) {
+        $sql = "select * from gerecht_info where record_type = '$BFOW' and gerecht_id = $gerecht_id";
         
         $result = mysqli_query($this->connection, $sql);
         
         if ($result -> num_rows > 0) {
-            while ($gerecht_info = $result -> fetch_assoc()){
+            while ($recipe_info = $result -> fetch_assoc()){
                 echo "<pre>"; 
                 if ($BFOW == "F" or $BFOW == "O") {
                     # Uses the private function to retreive the user's data
-                    $useData = $this -> getUser($gerecht_info["user_id"]);
-                    $merged_array = array_merge($gerecht_info, $useData);
-                    $collection_users[] = $merged_array;
+                    $useData = $this -> getUser($recipe_info["user_id"]);
+                    $merged_array = array_merge($recipe_info, $useData);
+                    $collection[] = $merged_array;
                 }
                 else {
-                    $collection_users[] = $gerecht_info;
+                    $collection[] = $recipe_info;
                 }
             }
         }
-        return($collection_users);
+        return($collection);
     }
 
     private function getUser($user_id) {

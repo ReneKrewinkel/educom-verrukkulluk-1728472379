@@ -1,58 +1,63 @@
 <?php
 
-require_once("lib/user.php");
 class Recipe {
     
     private $connection;
-    private $db;
     private $use;
-    private $ing;           # Later bijgevoegd
-    private $kt;            # Later bijgevoegd
-    private $BFOW;          # Later bijgevoegd
+    private $ing;
+    private $kt;
+    private $BFOW;
 
     public function __construct($connection) {
         # Establishes a connection with the database and the artikel class
         $this -> connection = $connection;
-        $this -> db     = new database();
-        $this -> use    = new user($this -> db -> getConnection());
-        $this -> ing    = new ingredient($this -> db -> getConnection());
-        $this -> kt     = new kitchenType($this -> db -> getConnection());
-        $this -> BFOW   = new BFOW($this -> db -> getConnection());
+        $this -> use    = new user($this -> connection);
+        $this -> ing    = new ingredient($this -> connection);
+        $this -> kt     = new kitchenType($this -> connection);
+        $this -> BFOW   = new BFOW($this -> connection);
     }
 
-    public function selecteerRecipe($gerecht_id, $user_id = 1) {
-        $sql = "select * from gerecht where id = $gerecht_id"; # "select * from gerecht where id = $gerecht_id";
-        $result = mysqli_query($this->connection, $sql);
-        $gerecht = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    public function selecteerRecipe($gerecht_id = null) {
+        $sql = "select * from gerecht";
+        if ($gerecht_id) {
+            $sql .= " where id = $gerecht_id";
+        }
 
-        $user =         $this -> getUser($gerecht["user_id"]);
-        $ingridients =  $this -> getIngredient($gerecht_id);
-        $calories =     $this -> calcCalorieen($ingridients);
-        $price =        $this -> calcPrice($ingridients);
-        $rating =       $this -> calcStars($this -> getBFOW($gerecht_id, "W"));
-        $bereidingswijze = $this -> selectSteps($this -> getBFOW($gerecht_id, "B"));
-        $opmerkingen =  $this -> selectRemarks($this -> getBFOW($gerecht_id, "O"));
-        $keuken =       $this -> selectKitchen($this -> getKT($gerecht["keuken_id"]));
-        $type =         $this -> selectType($this -> getKT($gerecht["type_id"]));
-        $favorite =     $this -> determineFavorite($this -> getBFOW($gerecht_id, "F"));
+        $result = mysqli_query($this->connection, $sql) or die(mysqli_error($this -> connection));
+        $recipesComplete = [];
 
-        $gerechtCompleet = [
-            "User information"      => $user,
-            "Hoeveelheid calorieen" => $calories,
-            "Prijs"                 => $price,
-            "Rating"                => $rating,
-            "Keuken"                => $keuken,
-            "Type"                  => $type,
-            "Favoriet"              => $favorite,
-            "Ingrident"             => $ingridients,
-            "Bereidigswijze"        => $bereidingswijze,
-            "Opmerkingen"           => $opmerkingen
-        ];
+        while ($recipe = $result->fetch_assoc()){
+             $user =         $this -> getUser($recipe["user_id"]);
+             $kitchen =      $this -> selectKitchen($this -> getKT($recipe["keuken_id"]));
+             $type =         $this -> selectType($this -> getKT($recipe["type_id"]));
+             $ingridients =  $this -> getIngredient($recipe["id"]);
+             $calories =     $this -> calcCalorieen($ingridients);
+             $price =        $this -> calcPrice($ingridients);
+             $rating =       $this -> calcStars($this -> getBFOW($recipe["id"], "W"));
+             $steps =        $this -> selectSteps($this -> getBFOW($recipe["id"], "B"));
+             $remarks =      $this -> selectRemarks($this -> getBFOW($recipe["id"], "O"));
+             $favorite =     $this -> determineFavorite($this -> getBFOW($recipe["id"], "F"));
 
-        return($gerechtCompleet);
+             $recipeComplete = [
+                "user"              => $user,
+                "calories"          => $calories,
+                "price"             => $price,
+                "rating"            => $rating,
+                "kitchen"           => $kitchen,
+                "type"              => $type,
+                "favorite"          => $favorite,
+                "ingridients"       => $ingridients,
+                "steps"             => $steps,
+                "remarks"           => $remarks
+            ];
+
+            $recipesComplete[] = $recipeComplete;
+        }
+
+        return $recipesComplete;
     }
 
-    # Classes linken
+    # Connecting classes
     private function getUser($user_id) {
         $useData = $this -> use -> selecteerUser($user_id); 
         return($useData);
@@ -63,8 +68,8 @@ class Recipe {
         return($ingData);
     }
 
-    private function getBFOW($gerechtOrUser_id, $BFOW) {
-        $BFOWData = $this -> BFOW -> selecteerBFOW($gerechtOrUser_id, $BFOW); 
+    private function getBFOW($gerecht_id, $BFOW) {
+        $BFOWData = $this -> BFOW -> selecteerBFOW($gerecht_id, $BFOW); 
         return($BFOWData);
     }
 
@@ -73,7 +78,6 @@ class Recipe {
         return($KTData);
     }
 
-    # Let op, er zijn ingredienten die later zijn toegevoegd, zorg dat je alle rijen ziet
     # Calculating information
     private function calcCalorieen($ingData) {
         $cal_sum = 0;
@@ -83,8 +87,7 @@ class Recipe {
         return($cal_sum);
     }
 
-    # Let op, er zijn ingredienten die later zijn toegevoegd, zorg dat je alle rijen ziet
-    # Dit is echt de prijs per gerecht, prijs voor elk artiekel komt pas aan bod in boodschappenlijstje
+    # Price per recipe their used ingridients, price for collection articles later
     private function calcPrice($ingData) {
         $price_sum = 0;
         foreach ($ingData as $ingridient) {
@@ -147,11 +150,5 @@ class Recipe {
 
     private function determineFavorite($BFOWData){
         return $BFOWData;
-        // foreach ($BFOWData as $favorite) {
-        //     if ($favorite["gerecht_id"] == $gerecht_id){
-        //         $user_id = $favorite['user_id'];
-        //         #return "Gerecht $gerecht_id is a favorite of user $user_id";
-        //     }
-        // }
     }
 }

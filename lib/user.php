@@ -12,7 +12,7 @@ class user {
 
         $sql = "select * from user where id = $user_id";
         
-        $result = mysqli_query($this->connection, $sql);
+        $result = mysqli_query($this->connection, $sql)  or die(mysqli_error($this -> connection));
         $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
         return($user);

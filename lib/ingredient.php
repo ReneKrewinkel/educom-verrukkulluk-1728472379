@@ -1,21 +1,25 @@
 <?php
 
-require_once("lib/artikel.php");
+#require_once("lib/artikel.php");
 class ingredient {
     
     private $connection;
-    private $db;
     private $art;
 
     public function __construct($connection) {
         # establishes a connection with the database and the artikel class
         $this -> connection = $connection;
-        $this -> db = new database();
-        $this -> art = new artikel($this -> db->getConnection());
+        #$this -> db = new database();
+        $this -> art = new artikel($this -> connection);
     }
   
     public function selecteerIngredient($gerecht_id) {
         $sql = "select * from ingredieent where gerecht_id = $gerecht_id";
+        // $sql = "select * from ingredieent";
+
+        // if ($gerecht_id) {
+        //     $sql .= " where gerecht_id = $gerecht_id";
+        // }
         $result = mysqli_query($this->connection, $sql);
         
         $collection_ingredients = [];
@@ -35,11 +39,6 @@ class ingredient {
                     $filtered_row[$column] = $artData[$column];
                 }
                 
-                /* 
-                of vanaf $filtered_row:
-                 $filtered_row = ["naam" => $artData["naam"], ...];
-                */
-
                 $merged_array = array_merge($ingredient, $filtered_row);
                 $collection_ingredients[] = $merged_array;
             }
