@@ -52,3 +52,175 @@ html, body {
     font-family: "Helvetica Neue", Arial, SansSerif;
     font-size: 16px;
 }
+
+/** BUTTON **/
+.button-container a{
+    width: 110px;
+    height: 50px;
+    /* padding: 10px; */
+    background-color: #F00;
+    color: #FFF;
+    font-family: var(--heading) !important;
+    font-size: 32px;
+    text-align: center;
+
+    border-radius: 40px;
+
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.button-login a{
+    display: block;
+    width: 110px;
+    height: 50px;
+    /* padding: 10px; */
+    background-color: var(--lighter-orange);
+    color: #FFF;
+    font-family: var(--heading) !important;
+    font-size: 32px;
+    text-align: center;
+
+    border-radius: 40px; 
+
+}
+
+.button-login-container {
+    display: flex;
+    justify-content: center;
+
+}
+
+
+
+.image-container{
+    display: flex;
+    justify-content: center;
+    object-fit: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-bottom: 10px;
+
+    margin-top: -20px;
+    margin-left: -20px;
+    margin-right: -20px;
+    height: 300px;
+}
+
+.container {
+    background-color: #fff;
+    /* border: 1px solid #000;*/
+    text-align: left;
+    grid-gap: 5px;
+}
+
+.cell{
+    border: 1px solid black;
+    padding: 20px;
+    background-color: #fff;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
+
+    height: 500px;
+
+    position: relative;
+}
+
+.subcel{
+    text-align: center;
+    border-radius: 40px;
+
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.container_2 { /* Met grid? */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: #000;
+    padding: 10px;
+    border: 1px solid #fff;
+    text-align: left;
+    grid-gap: 5px;
+}
+
+.lightGreen{
+    background-color: --lighter-green;
+}
+
+/* MENU */
+/* ik wil een carossel als achtergrond, hoe doe ik dit? */
+.menu {
+    position: fixed;
+    top: -200px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    transition: top 0.3s ease-in-out;
+}
+
+.menu.visible{
+    top: 0;
+}
+
+.menu-content{
+    padding: 20px;
+}
+
+.menu-trigger {
+    position: fixed;
+    top: 30px;
+    right: 140px;
+    background-color: #F00;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    z-index: 5000 !important;
+}
+
+/* ACHTERGROND? */
+.background-header {
+    background-image: url('https://auroraforyou.ru/wp-content/uploads/Kak-nachat-pravilno-pitatsya-1-e1625129528200.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* TEXT */
+a {
+    text-decoration: none;
+}
+
+.text-with-dots {
+    display: block;
+    max-width: 98%;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+.fading-content {
+    /* width: 300px */
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    max-height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    content: "";
+    position:relative;
+}
+
+.fading-content:after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(transparent 80px, #FFF);
+} 

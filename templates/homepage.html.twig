@@ -2,47 +2,108 @@
 {% extends "main.html.twig" %}
 
 {% block header %}
-<img src="assets/img/logo-v2.png"/>
-{% endblock %}
+{# <img src="assets/img/logo-v2.png"/>
+<div class="menu">
+    <div class="menu-trigger">
+        <div class="dropdown">
+            <div>
+                <img src="assets/img/logo-v2.png" style="height: 150px;"/>
+            </div>
+        </div>
+    </div>
+</div> #}
 
+<div style="background-image: url('https://auroraforyou.ru/wp-content/uploads/Kak-nachat-pravilno-pitatsya-1-e1625129528200.jpeg')">
+    <img src="assets/img/logo-v2.png" style="height: 175px;"/>
+</div>
+
+<button id = "menu-trigger" class = "menu-trigger"> </button> 
+<div class = "menu" id = "menu">
+    <div class = "menu-content">
+        <img src="assets/img/logo-v2.png" style="height: 150px;"/>
+    </div>
+</div>
+
+<script>
+    document.getElementById('menu-trigger').addEventListener('click', function() {
+        document.getElementById('menu').classList.toggle('visible');
+    })
+
+    document.addEventListener('click', function(event) {
+        var menu = document.getElementById('menu')
+        var isClickInsideMenu = menu.contains(event.target);
+        var isClickOnTrigger = document.getElementById('menu-trigger').contains(event.target);
+
+        if (!isClickInsideMenu && !isClickOnTrigger) {
+            menu.classList.remove('visible');
+        }
+    })
+</script>
+{% endblock %}
 
 {# nu de block content op in de main pagina vullen #}
 {% block content %}
     {# Dit is commentaar #}
 
     {# Print #}
-    <h1>Heading #1</h1>
+    {# <h1>Heading #1</h1>
     <h2>Heading #2</h2>
     <h3>Heading #3 t/m 5</h3>
 
-    <h4>Dit is de template {{  title }}</h4>
+    <h3> Vegetarisch koken </h3> #}
 
-{# Loop #}
-    <ul>
-    {% for record in data %}
-        <li>
-            <img src="{{ record.foto }}" style="width: 100px; heigfht: 100px;">
+{# (in div postition: relevant) (in button position: apsolute bottom = 10px, left: 10px) #}
 
-            {{ record.title }}
-            {# sub-loop #}
-            <ul>
-                {% for ingr in record.ingredienten %}
-                    <li>
-                        <span {% if ingr.id < 2 %}style='color: #F00'{% endif %}>{{  ingr.naam }}</span>
+<div class="container-fluid container">
+    <div class = "row">
+        {% for record in data %}
+            <div class = "col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <div class = "cell">
+                    <div class = "image-container" 
+                         style="background-image: url('{{ record.recipe.afbeelding }}')">
+                    </div>
+                    <div class = "row">
+                        <div class = "col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                            <h1 class = "text-with-dots"> {{ record.recipe.titel }} </h1>
+                        </div>
+                        <div class = "col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                            <p> test 123 </p>
+                        </div>
+                    </div>
+                    <div class = "fading-content">
+                        {{ record.recipe.korte_omschrijving }}
+                    </div>
+                    <div class = "row">
+                        <div class = "col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <div class = "button-container">
+                                <a href = "http://localhost/educom-verrukkulluk/index_2.php"> Smullen! </a>
+                            </div>
+                        </div>
+                        <div class = "col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 subcel">
+                            <div class = "row">
+                                <div class = "col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4"> 
+                                    <p> 4 </p>
+                                </div>
 
-                        {# if #}
-                        {%  if ingr.id == 3 %}
-                            <strong>Dit is ID 3!</strong>
-                        {%  endif  %}
-                    </li>
-                {% endfor %}
-            </ul>
-        </li>
-    {% endfor %}
-    <ul>
-     {# Dump #}
-       <pre>
-        {{ dump(data) }}
-       </pre>
+                                <div class = "col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                    <p> {{ record.price|round(2) }} </p>
+                                </div>
+
+                                <div class = "col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                    <p> {{ record.calories|round(0) }} </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if loop.index % 2 == 0 %}
+                </div><div class = "row"></div> <br>
+                <div class = "row">
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>    
+
 
 {% endblock %}
