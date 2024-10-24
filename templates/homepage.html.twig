@@ -2,78 +2,234 @@
 {% extends "main.html.twig" %}
 
 {% block header %}
-{# <img src="assets/img/logo-v2.png"/>
-<div class="menu">
-    <div class="menu-trigger">
-        <div class="dropdown">
-            <div>
-                <img src="assets/img/logo-v2.png" style="height: 150px;"/>
-            </div>
+
+{# <div class="carousel slide" id="carousel-254962">
+    <ol class="carousel-indicators">
+        <li data-slide-to="0"
+            data-target="#carousel-254962"
+            class="active">
+        </li>
+        <li data-slide-to="1" data-target="#carousel-254962"></li>
+        <li data-slide-to="2" data-target="#carousel-254962"></li>
+    </ol>
+    <div class="carousel-inner container" style = "border: 0px;">
+        <div class="carousel-item active">
+            <img src = "https://auroraforyou.ru/wp-content/uploads/Kak-nachat-pravilno-pitatsya-1-e1625129528200.jpeg"
+                 class = "d-block w-100">
+        </div>
+
+        <div class="carousel-item">
+            <img src = "https://www.laversionedienrica.it/wp-content/uploads/2016/08/Melanzane-alla-parmigiana-11.jpg"
+                 class = "d-block w-100">
+        </div>
+
+        <div class="carousel-item">
+            <img src = "https://drogespieren.nl/wp-content/uploads/aan-tafel-gezonder.jpg"
+                 class = "d-block w-100">
+        </div>
+    </div> 
+    <a class="carousel-control-prev"
+        href="#carousel-254962"
+        data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next"
+        href="#carousel-254962"
+        data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="sr-only">Next</span>
+    </a>
+    <div style = "position: sticky; margin-top: -640; margin-bottom: 430; margin-left: 180;">
+        <div class = "floating-container"
+             style = "width: 450px; 
+                      height: 200px;
+                      background-color: rgba(225, 225, 225, 0.5);">
+            <img src="assets/img/logo-v2.png" style="height: 175px;" alt="Sticky Item">
         </div>
     </div>
 </div> #}
 
-<div style="background-image: url('https://auroraforyou.ru/wp-content/uploads/Kak-nachat-pravilno-pitatsya-1-e1625129528200.jpeg')">
-    <img src="assets/img/logo-v2.png" style="height: 175px;"/>
+<div class="carousel slide" id="carousel-254962">
+    <ol class="carousel-indicators">
+        <li data-slide-to="0"
+            data-target="#carousel-254962"
+            class="active">
+        </li>
+        <li data-slide-to="1" data-target="#carousel-254962"></li>
+        <li data-slide-to="2" data-target="#carousel-254962"></li>
+    </ol>
+    <div class="carousel-inner container" style = "border: 0px;">
+        <div class="carousel-item active">
+            <div style="align-items: center;
+                        width: 1500;
+                        height: 640px;
+                        background-size: cover; 
+                        justify-content: center;
+                        background-image: url('https://auroraforyou.ru/wp-content/uploads/Kak-nachat-pravilno-pitatsya-1-e1625129528200.jpeg'); 
+                        ">
+                <div class = "floating-container" 
+                    style ="align-items: center;
+                            width: 450px; 
+                            height: 200px;
+                            background-color: rgba(225, 225, 225, 0.5);">
+                    <img src="assets/img/logo-v2.png" style="height: 175px;"/>
+                </div> 
+            </div>
+        </div>
+
+        <div class="carousel-item">
+                    {# Kijk of je de afbeelding kunt verkleinen? Zie recept dat zichzelf zelfs aanpast#}
+            <div style="align-items: center;
+                        height: 640px; 
+                        background-size: cover; 
+                        justify-content: center;
+                        background-image: url('https://www.laversionedienrica.it/wp-content/uploads/2016/08/Melanzane-alla-parmigiana-11.jpg');
+                        ">
+                <div class = "floating-container"
+                    style = "width: 450px; 
+                            height: 200px;
+                            background-color: rgba(225, 225, 225, 0.5);">
+                    <img src="assets/img/logo-v2.png" style="height: 175px;"/>
+                </div> 
+            </div>
+        </div>
+
+        <div class="carousel-item">
+                    {# Kijk of je de afbeelding kunt verkleinen? Zie recept dat zichzelf zelfs aanpast#}
+            <div style="height: 640px; 
+                        background-size: cover; 
+                        justify-content: center;
+                        background-image: url('https://drogespieren.nl/wp-content/uploads/aan-tafel-gezonder.jpg');">
+                <div class = "floating-container" 
+                    style = "width: 450px; 
+                            height: 200px;
+                            background-color: rgba(225, 225, 225, 0.5);">
+                    <img src="assets/img/logo-v2.png" style="height: 175px;"/>
+                </div> 
+            </div>
+        </div>
+    </div> 
+        <a class="carousel-control-prev"
+           href="#carousel-254962"
+           data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next"
+           href="#carousel-254962"
+           data-slide="next">
+           <span class="carousel-control-next-icon"></span>
+            <span class="sr-only">Next</span>
+        </a>
+            {# <div style = "position: sticky; margin-top: -640; margin-bottom: 430; margin-left: 180;">
+                            <div class = "floating-container"
+                    style = "width: 450px; 
+                            height: 200px;
+                            background-color: rgba(225, 225, 225, 0.5);">
+                    <img src="assets/img/logo-v2.png" style="height: 175px;" alt="Sticky Item">
+                </div>
+            </div> #}
 </div>
 
-<button id = "menu-trigger" class = "menu-trigger"> </button> 
-<div class = "menu" id = "menu">
-    <div class = "menu-content">
-        <img src="assets/img/logo-v2.png" style="height: 150px;"/>
-    </div>
-</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<script>
-    document.getElementById('menu-trigger').addEventListener('click', function() {
-        document.getElementById('menu').classList.toggle('visible');
-    })
-
-    document.addEventListener('click', function(event) {
-        var menu = document.getElementById('menu')
-        var isClickInsideMenu = menu.contains(event.target);
-        var isClickOnTrigger = document.getElementById('menu-trigger').contains(event.target);
-
-        if (!isClickInsideMenu && !isClickOnTrigger) {
-            menu.classList.remove('visible');
-        }
-    })
-</script>
 {% endblock %}
-
-{# nu de block content op in de main pagina vullen #}
 {% block content %}
-    {# Dit is commentaar #}
 
-    {# Print #}
-    {# <h1>Heading #1</h1>
-    <h2>Heading #2</h2>
-    <h3>Heading #3 t/m 5</h3>
+{# <pre>
+{{ dump(data )}}
+</pre> #}
 
-    <h3> Vegetarisch koken </h3> #}
-
-{# (in div postition: relevant) (in button position: apsolute bottom = 10px, left: 10px) #}
-
-<div class="container-fluid container">
+<div class="container-fluid ">
     <div class = "row">
         {% for record in data %}
-            <div class = "col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                <div class = "cell">
-                    <div class = "image-container" 
+            <div class = "col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> {# Geeft alle info van een specifiek gerecht #}
+                <div class = "cell"> 
+                    <div class = "image-container" {# afbeelding gerecht #}
                          style="background-image: url('{{ record.recipe.afbeelding }}')">
                     </div>
-                    <div class = "row">
-                        <div class = "col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                    <div class = "row"> {# title and rating #}
+                        <div class = "col-7 col-sm-9 col-md-9 col-lg-8 col-xl-9"> {# title #}
                             <h1 class = "text-with-dots"> {{ record.recipe.titel }} </h1>
                         </div>
-                        <div class = "col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                            <p> test 123 </p>
+                        <div class = "col-4 col-sm-3 col-md-3 col-lg-4 col-xl-3"> {# rating #}
+                            {% if record.rating < 0.5 %}
+                                <h6 class = "menu-container"> <i class="icon-star fa-regular fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i> </h6>
+                            {% elseif record.rating < 1 %}
+                                <h6 class = "menu-container"> <i class="icon-star fa-regular fa-star-half-stroke"></i>
+                                     <i class="icon-star fa-regular fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i> </h6>
+                            {% elseif record.rating < 1.5 %}
+                                <h6 class = "menu-container"> <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i> </h6>
+                            {% elseif record.rating < 2 %}
+                                <h6 class = "menu-container"> <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star-half-stroke"></i>
+                                     <i class="icon-star fa-regular fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i> </h6>
+                            {% elseif record.rating < 2.5 %}
+                                <h6 class = "menu-container"> <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i> </h6>
+                            {% elseif record.rating < 3 %}
+                                <h6 class = "menu-container"> <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star-half-stroke"></i>
+                                     <i class="icon-star fa-regular fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i> </h6>
+                            {% elseif record.rating < 3.5 %}
+                                <h6 class = "menu-container"> <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i> </h6>
+                            {% elseif record.rating < 4 %}
+                                <h6 class = "menu-container"> <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star-half-stroke"></i>
+                                     <i class="icon-star fa-regular fa-star"></i> </h6>
+                            {% elseif record.rating < 4.5 %}
+                                <h6 class = "menu-container"> <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star"></i> </h6>
+                            {% elseif record.rating < 5 %}
+                                <h6 class = "menu-container"> <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-regular fa-star-half-stroke"></i> </h6>
+                            {% else %}
+                                <h6 class = "menu-container"> <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-solid fa-star"></i>
+                                     <i class="icon-star fa-solid fa-star"></i> </h6>
+                            {% endif %}
                         </div>
                     </div>
-                    <div class = "fading-content">
+                    <div class = "fading-content" {# korte omschrijving #}
+                         style = "position: flex; bottom: 10px; right: 10px; height: 50px"> 
                         {{ record.recipe.korte_omschrijving }}
                     </div>
-                    <div class = "row">
+                    <div class = "row"> {# button and other info #}
                         <div class = "col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                             <div class = "button-container">
                                 <a href = "http://localhost/educom-verrukkulluk/index_2.php"> Smullen! </a>
@@ -82,22 +238,24 @@
                         <div class = "col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 subcel">
                             <div class = "row">
                                 <div class = "col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4"> 
-                                    <p> 4 </p>
+                                    <p> <i class = "fa-solid fa-user-group icon"></i> 4 </p>
                                 </div>
 
                                 <div class = "col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                                    <p> {{ record.price|round(2) }} </p>
+                                    <p> <i class = "fa-solid fa-euro-sign icon"></i> {{ record.price|round(2) }} </p>
                                 </div>
 
                                 <div class = "col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                                    <p> {{ record.calories|round(0) }} </p>
+                                    <p> <i class = "fa-solid fa-fire icon"></i> {{ record.calories|round(0) }} </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <br>
             </div>
-            {% if loop.index % 2 == 0 %}
+            
+            {% if loop.index % 2 == 0 %} {# loop voor 2 per regel #}
                 </div><div class = "row"></div> <br>
                 <div class = "row">
             {% endif %}
@@ -105,5 +263,24 @@
     </div>
 </div>    
 
+{# Moet nog werk aan gebeuren? voor rating ingeven#}
+<script>
+    const stars = document.querySelectorAll('.star');
+    stars.forEach((star, index) => {
+        star.addEventListner('click', () => {
+            const rating = index + 1;
+            stars.forEach((s, i) => {
+                if (i < rating) {
+                    s.classList.add('checked');
+                } else {
+                    s.classList.remove('checked');
+                }
+            });
+        });
+    });
+</script>
+
 
 {% endblock %}
+
+

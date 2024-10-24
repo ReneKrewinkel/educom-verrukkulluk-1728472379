@@ -29,22 +29,26 @@
 
 }
 
+carousel-item {
+    height: 640px;
+    width: 1500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+carousel-item img {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
 /** HEADING **/
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--heading) !important;
-}
-
-h1 {
-    font-size: 52px;
-}
-
-h2 {
-    font-size: 42px;
-}
-
-h3, h4, h5 {
-    font-size: 32px;
-}
+h1, h2, h3, h4, h5, h6 {font-family: var(--heading) !important; }
+h1 {font-size: 52px;}
+h2 {font-size: 42px;}
+h3, h4, h5 {font-size: 32px;}
 
 
 /** HTML / BODY **/
@@ -55,8 +59,12 @@ html, body {
 
 /** BUTTON **/
 .button-container a{
+    display: block;
     width: 110px;
     height: 50px;
+
+    /* margin-bottom: 10px;
+    left: 10px;  */
     /* padding: 10px; */
     background-color: #F00;
     color: #FFF;
@@ -66,9 +74,7 @@ html, body {
 
     border-radius: 40px;
 
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
+    /* position: absolute; */
 }
 
 .button-login a{
@@ -83,26 +89,24 @@ html, body {
     text-align: center;
 
     border-radius: 40px; 
-
 }
 
 .button-login-container {
     display: flex;
     justify-content: center;
-
 }
 
 
 
 .image-container{
-    display: flex;
+    /* display: flex; */
     justify-content: center;
-    object-fit: cover;
+    /* object-fit: cover; */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    margin-bottom: 10px;
 
+    margin-bottom: 10px;
     margin-top: -20px;
     margin-left: -20px;
     margin-right: -20px;
@@ -110,10 +114,10 @@ html, body {
 }
 
 .container {
-    background-color: #fff;
-    /* border: 1px solid #000;*/
+    border: 1px solid #000;
     text-align: left;
     grid-gap: 5px;
+    background-color: #fff;
 }
 
 .cell{
@@ -126,16 +130,16 @@ html, body {
 
     height: 500px;
 
-    position: relative;
+    /* position: relative; */
 }
 
 .subcel{
     text-align: center;
     border-radius: 40px;
 
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
+    /* position: absolute; */
+    /* bottom: 10px;
+    right: 10px; */
 }
 
 .container_2 { /* Met grid? */
@@ -149,11 +153,19 @@ html, body {
 }
 
 .lightGreen{
-    background-color: --lighter-green;
+    background-color: var(--lighter-green);
 }
 
 /* MENU */
 /* ik wil een carossel als achtergrond, hoe doe ik dit? */
+.menu-container {
+    color: var(--lighter-red);
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Verticaal centreren */
+    height: 100%; /* Zorg dat het element de volledige hoogte inneemt */
+}
+
 .menu {
     position: fixed;
     top: -200px;
@@ -161,6 +173,7 @@ html, body {
     width: 100%;
     background-color: white;
     transition: top 0.3s ease-in-out;
+    border: 1px solid #000;
 }
 
 .menu.visible{
@@ -175,12 +188,19 @@ html, body {
     position: fixed;
     top: 30px;
     right: 140px;
-    background-color: #F00;
+    background-color: #fff;
     width: 40px;
     height: 40px;
     cursor: pointer;
     transition: all 0.4s ease;
     z-index: 5000 !important;
+}
+
+.floating-container {   /* Zodat de knop altijd zichtbaar zal zijn */
+    /* position: fixed; */
+    top: 25px;
+    right: 135px;
+    padding: 10px;
 }
 
 /* ACHTERGROND? */
@@ -212,15 +232,44 @@ a {
     overflow: hidden;
     text-overflow: ellipsis;
     content: "";
-    position:relative;
+    /* position:relative; */
 }
 
 .fading-content:after{
     content: '';
     width: 100%;
     height: 100%;
-    position: absolute;
+    /* position: absolute; */
     left: 0;
     top: 0;
     background: linear-gradient(transparent 80px, #FFF);
 } 
+
+    /* RATING */
+.icon {
+    color: var(--lighter-red);
+}
+
+.icon-calander {
+    color: #FFF; /* Verandert de kleur van het pictogram */
+}
+
+.icon-star {
+    color: goldenrod; /* Verandert de kleur van het pictogram */
+}
+
+.star-rating {
+    display: flex;
+    direction: row;
+    justify-content: center;
+}
+
+.star {
+    font-size: 10px;
+    cursor: pointer;
+    color: gray;
+}
+
+.star.checked {
+    color: gold;
+}

@@ -13,19 +13,7 @@
     <script type="text/javascript" language="javascript" src="assets/jquery/jquery-3.5.1.js"></script>
     <script type="text/javascript" language="javascript" src="assets/bootstrap/js/bootstrap.js"></script>
 
-
-    <style>
-        /* ICONS: */
-        /* 
-        People: <i class = "fa-solid fa-user-group"></i> by Muhazdinata
-        Price:  <i class = "fa-regular fa-euro-sign"></i> by Ch.designer
-        Fire:   <i class = "fa-thin fa-fire"></i> by Freepik
-        */
-
-
-        
-
-    </style>
+    <script src="https://kit.fontawesome.com/ce8cf83f30.js" crossorigin="anonymous"></script>
 
 </html>
 <body>
@@ -35,19 +23,72 @@
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         {% block header %}
-        {% endblock %}   
+        {% endblock %} 
+          
+        {# menu #}
+        <div class = "menu" id = "menu">
+            <div class = "menu-content">
+                <div class = "row">
+                    <div class = "col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6"> {# logo #}
+                        <img src="assets/img/logo-v2.png" style="height: 150px;"/>
+                    </div>
+                    <div class = "col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3"> {# Mijn Favoriet #}
+                        <a href = "http://localhost/educom-verrukkulluk/index_2.php"> <h1 class = "menu-container"> Mijn Favorieten </h1> </a>
+                    </div>
+                    <div class = "col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3"> {# Mijn Boodschappenlijkst #}
+                        <a href = "http://localhost/educom-verrukkulluk/index_2.php"> <h1 class = "menu-container"> Mijn Boodschappenlijst </h1> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# menu-knop #}
+        <div class = "floating-container" 
+            style = "position: fixed; 
+                    width: 50px; 
+                    height: 50px;
+                    background-color: rgba(0, 0, 0, 0.5);"> 
+            <button id = "menu-trigger" class = "menu-trigger"> </button> 
+        </div>
+
+        <script> /* Voor het zichtbaar en onzichtbaar maken van het menu */
+            {# voor het zichtbaar maken van de menu wanneer op de knop wordt geklikt #}
+            document.getElementById('menu-trigger').addEventListener('click', function() {
+                document.getElementById('menu').classList.toggle('visible');
+            })
+
+            {# voor het verbergen van de menu wanneer ergens anders wordt geklikt #}
+            document.addEventListener('click', function(event) {
+                var menu = document.getElementById('menu')
+                var isClickInsideMenu = menu.contains(event.target);
+                var isClickOnTrigger = document.getElementById('menu-trigger').contains(event.target);
+
+                if (!isClickInsideMenu && !isClickOnTrigger) {
+                    menu.classList.remove('visible');
+                }
+            })
+        </script>
         </div>
     </div>
     <div class="row">
         <p> <br> </p>
     </div>
     <div class="row">
-        <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3"> 
-            <div style = "background-color: var(--lighter-green)">
-                <h1 style = "text-align: center; color: #FFF;">  Agenda </h1>
+        <div class="col-5 col-sm-5 col-md-4 col-lg-4 col-xl-3"> {# agenda #}
+            <div style = 
+            "background-color: var(--lighter-green);
+             -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
+             -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
+             box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);">
+
+                <div style = "text-align: center;">
+                    <br>
+                    <img src="assets/img/verrukkulluk-agenda.png" style="height: 70px;"/>
+                    <br><br>
+                </div>
                 <div class = "row">
-                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                        <h3>  <i class="fa fa-calendar" style = "margin-left: 20px"></i> </h3>
+                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style = "text-align: right">
+                        <h3>  <i class="fa fa-calendar icon-calander" style = "margin-right: -10px"></i> </h3>
                     </div>
                     <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
                         <h3> Vegetarisch koken </h3>
@@ -58,8 +99,8 @@
                     </div>
                 </div>
                 <div class = "row">
-                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                        <h3>  <i class="fa fa-calendar" style = "margin-left: 20px"></i> </h3>
+                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style = "text-align: right">
+                        <h3>  <i class="fa fa-calendar icon-calander" style = "margin-right: -10px"></i> </h3>
                     </div>
                     <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
                         <h3> Veganistisch koken </h3>
@@ -70,8 +111,8 @@
                     </div>
                 </div>
                 <div class = "row">
-                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                        <h3>  <i class="fa fa-calendar" style = "margin-left: 20px"></i> </h3>
+                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style = "text-align: right">
+                        <h3>  <i class="fa fa-calendar icon-calander" style = "margin-right: -10px"></i> </h3>
                     </div>
                     <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
                         <h3> Italiaans koken </h3>
@@ -83,8 +124,8 @@
                     </div>
                 </div>
                 <div class = "row">
-                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                        <h3>  <i class="fa fa-calendar" style = "margin-left: 20px"></i> </h3>
+                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style = "text-align: right">
+                        <h3>  <i class="fa fa-calendar icon-calander" style = "margin-right: -10px"></i> </h3>
                     </div>
                     <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
                         <h3> Frans koken </h3>
@@ -95,8 +136,8 @@
                     </div>
                 </div>
                 <div class = "row">
-                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                        <h3>  <i class="fa fa-calendar" style = "margin-left: 20px"></i> </h3>
+                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style = "text-align: right">
+                        <h3>  <i class="fa fa-calendar icon-calander" style = "margin-right: -10px"></i> </h3>
                     </div>
                     <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
                         <h3> Japans koken </h3>
@@ -107,15 +148,24 @@
                     </div>
                 </div>
 
-                <i class="fa fa-calendar"></i> FontAwesome <a href="https://fontawesome.com/icons?d=gallery&m=free">Documentation</a><br>
+                {# <i class="fa fa-calendar"></i> FontAwesome <a href="https://fontawesome.com/icons?d=gallery&m=free">Documentation</a><br>
                 <i class="fa fa-file-pdf"></i><a href="https://www.layoutit.com/build">Layout-it</a>
-                <p> Vegetarisch koken </p>
+                <p> Vegetarisch koken </p> #}
             </div>
             <div>
                 <br>
             </div>
-            <div style = "background-color: var(--darker-red)">
-                <h1 style = "text-align: center; color: #FFF;"> Login </h1>
+            <div style = {# login #}
+                    "background-color: var(--darker-red);
+                     -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
+                     -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
+                     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);">
+
+                <div style = "text-align: center;">
+                    <br>
+                    <img src="assets/img/verrukkulluk-login.png" style="height: 70px;"/>
+                    <br><br>
+                </div>
 
                 <div class = "row">
                     <!-- Mail input-->
@@ -148,7 +198,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+        <div class="col-7 col-sm-7 col-md-8 col-lg-8 col-xl-9"> {# content #}
             {# <h2>Content</h2> #}
             {%  block content %}
             {%  endblock %}
@@ -158,10 +208,36 @@
 
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <h1>Footer</h1>
+            <h1></h1>
         </div>
     </div>
-
+    <div class="row" style = {# contact #}
+                    "background-color: var(--lighter-orange);
+                     -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
+                     -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
+                     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        {% block footer %}
+            <div class="row">
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style = "text-align: center;">
+                    <br>
+                    <img src="assets/img/verrukkulluk-pay-off.png" style="height:150px;"/>
+                </div>
+                <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                    <br><br>
+                    <img src="assets/img/verrukkulluk-contact.png" style="height: 70px;"/>
+                    <p style = "color: #FFF"> 
+                        Verrukkeluk.nl <br>
+                        Poststraat 2b <br>
+                        Sittard <br>
+                        info@verrukkelluk.nl </p>
+                </div>
+            </div>
+        
+        {% endblock %}   
+        <br><br>
+        </div>
+    </div>
 
 </div>
 
