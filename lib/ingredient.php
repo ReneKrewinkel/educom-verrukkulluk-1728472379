@@ -9,24 +9,19 @@ class ingredient {
     public function __construct($connection) {
         # establishes a connection with the database and the artikel class
         $this -> connection = $connection;
-        #$this -> db = new database();
         $this -> art = new artikel($this -> connection);
     }
   
     public function selecteerIngredient($gerecht_id) {
+        // echo "<pre>";
+        // var_dump($this->connection);
         $sql = "select * from ingredieent where gerecht_id = $gerecht_id";
-        // $sql = "select * from ingredieent";
-
-        // if ($gerecht_id) {
-        //     $sql .= " where gerecht_id = $gerecht_id";
-        // }
         $result = mysqli_query($this->connection, $sql);
         
         $collection_ingredients = [];
         if ($result -> num_rows > 0) {
             while ($ingredient = $result->fetch_assoc()){
                 # Makes the result readable
-                echo "<pre>"; 
 
                 # Uses the private function to obtain alle articles
                 $artData = $this -> GetArticle($ingredient["artikel_id"]);

@@ -39,6 +39,7 @@ class Recipe {
              $favorite =     $this -> determineFavorite($this -> getBFOW($recipe["id"], "F"));
 
              $recipeComplete = [
+                "recipe"            => $recipe,
                 "user"              => $user,
                 "calories"          => $calories,
                 "price"             => $price,

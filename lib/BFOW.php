@@ -20,7 +20,6 @@ class BFOW {
         
         if ($result -> num_rows > 0) {
             while ($recipe_info = $result -> fetch_assoc()){
-                echo "<pre>"; 
                 if ($BFOW == "F" or $BFOW == "O") {
                     # Uses the private function to retreive the user's data
                     $useData = $this -> getUser($recipe_info["user_id"]);
