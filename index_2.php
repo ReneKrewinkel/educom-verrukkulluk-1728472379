@@ -23,21 +23,16 @@ require_once("lib/BFOW.php");
 require_once("lib/recipe.php");
 require_once("lib/boodschappenToevoegen.php");
 require_once("lib/boodschappenToevoegenVolgensAlgoritme.php");
-
-
-
 require_once("fase-2/lib/gerecht.php");
-$db = new database();
-#$gerecht = new recipe($db -> getConnection());
 
+$db = new database();
 $gerecht = new recipe($db -> getConnection());
 $data = $gerecht -> selecteerRecipe();
 
 
 #var_dump($test -> selecteerRecipe());
 
-#$gerecht = new gerecht();
-// $data = $gerecht->selecteerRecipe();
+# $gerecht = new gerecht();
 // var_dump($data);
 
 /*
@@ -45,9 +40,9 @@ URL:
 http://localhost/index.php?gerecht_id=4&action=detail
 */
 
-$gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
+$gerecht_id = isset($_GET["recipe_id"]) ? $_GET["recipe_id"] : "";
 $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
-
+// $action = isset($_GET["action"]) ? $_GET["action"] : "detail";
 
 switch($action) {
 
@@ -62,7 +57,7 @@ switch($action) {
             $data = $gerecht->selecteerRecipe($gerecht_id);
             $template = 'detail.html.twig';
             $title = "detail pagina";
-            break;
+        break;
         }
 
         /// etc
@@ -79,4 +74,4 @@ $template = $twig->load($template);
 # De eerste geeft de template weer, de tweede laat zien data data niet leeg is
 # $Template heeft voorrang
 echo $template->render(["title" => $title, "data" => $data]);
-#print_r($data);
+# print_r($data);

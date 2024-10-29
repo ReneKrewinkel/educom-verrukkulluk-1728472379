@@ -2,6 +2,10 @@
 {% extends "main.html.twig" %}
 
 {% block header %}
+{# <pre>
+{{ dump(data)}}
+?recipe_id=2&action=detail
+</pre> #}
 
 {# <div class="carousel slide" id="carousel-254962">
     <ol class="carousel-indicators">
@@ -50,6 +54,7 @@
     </div>
 </div> #}
 
+{# HEADER #}
 <div class="carousel slide" id="carousel-254962">
     <ol class="carousel-indicators">
         <li data-slide-to="0"
@@ -59,8 +64,8 @@
         <li data-slide-to="1" data-target="#carousel-254962"></li>
         <li data-slide-to="2" data-target="#carousel-254962"></li>
     </ol>
-    <div class="carousel-inner container" style = "border: 0px;">
-        <div class="carousel-item active">
+    <div class="carousel-inner container" style = "border: 0px;"> {# Carosel Items #}
+        <div class="carousel-item active"> {# Carosel Item 1 #}
             <div style="align-items: center;
                         width: 1500;
                         height: 640px;
@@ -78,7 +83,7 @@
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item"> {# Carosel Item 2 #}
                     {# Kijk of je de afbeelding kunt verkleinen? Zie recept dat zichzelf zelfs aanpast#}
             <div style="align-items: center;
                         height: 640px; 
@@ -95,7 +100,7 @@
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item"> {# Carosel Item 3 #}
                     {# Kijk of je de afbeelding kunt verkleinen? Zie recept dat zichzelf zelfs aanpast#}
             <div style="height: 640px; 
                         background-size: cover; 
@@ -140,10 +145,10 @@
 {% block content %}
 
 {# <pre>
-{{ dump(data )}}
+{{ dump(data.0.recipe.id)}}
 </pre> #}
 
-<div class="container-fluid ">
+<div class="container-fluid "> {# gerecht-tegels #}
     <div class = "row">
         {% for record in data %}
             <div class = "col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> {# Geeft alle info van een specifiek gerecht #}
@@ -157,7 +162,8 @@
                         </div>
                         <div class = "col-4 col-sm-3 col-md-3 col-lg-4 col-xl-3"> {# rating #}
                             {% if record.rating < 0.5 %}
-                                <h6 class = "menu-container"> <i class="icon-star fa-regular fa-star"></i>
+                                <h6 class = "menu-container"> 
+                                     <i class="icon_2 fa-regular fa-star"></i>
                                      <i class="icon-star fa-regular fa-star"></i>
                                      <i class="icon-star fa-regular fa-star"></i>
                                      <i class="icon-star fa-regular fa-star"></i>
@@ -169,7 +175,8 @@
                                      <i class="icon-star fa-regular fa-star"></i>
                                      <i class="icon-star fa-regular fa-star"></i> </h6>
                             {% elseif record.rating < 1.5 %}
-                                <h6 class = "menu-container"> <i class="icon-star fa-solid fa-star"></i>
+                                <h6 class = "menu-container"> 
+                                     <i class="icon-star fa-solid fa-star"></i>
                                      <i class="icon-star fa-regular fa-star"></i>
                                      <i class="icon-star fa-regular fa-star"></i>
                                      <i class="icon-star fa-regular fa-star"></i>
@@ -230,22 +237,20 @@
                         {{ record.recipe.korte_omschrijving }}
                     </div>
                     <div class = "row"> {# button and other info #}
-                        <div class = "col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <div class = "col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6"> {# button #}
                             <div class = "button-container">
-                                <a href = "http://localhost/educom-verrukkulluk/index_2.php"> Smullen! </a>
+                                <a href = "http://localhost/educom-verrukkulluk/index_2.php?recipe_id={{ record.recipe.id }}&action=detail"> Smullen! </a>
                             </div>
                         </div>
-                        <div class = "col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 subcel">
+                        <div class = "col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 subcel"> {# other info #}
                             <div class = "row">
-                                <div class = "col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4"> 
+                                <div class = "col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4"> {# user #}
                                     <p> <i class = "fa-solid fa-user-group icon"></i> 4 </p>
                                 </div>
-
-                                <div class = "col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                <div class = "col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4"> {# price #}
                                     <p> <i class = "fa-solid fa-euro-sign icon"></i> {{ record.price|round(2) }} </p>
                                 </div>
-
-                                <div class = "col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                <div class = "col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4"> {# calories #}
                                     <p> <i class = "fa-solid fa-fire icon"></i> {{ record.calories|round(0) }} </p>
                                 </div>
                             </div>
@@ -264,7 +269,7 @@
 </div>    
 
 {# Moet nog werk aan gebeuren? voor rating ingeven#}
-<script>
+{# <script>
     const stars = document.querySelectorAll('.star');
     stars.forEach((star, index) => {
         star.addEventListner('click', () => {
@@ -278,7 +283,7 @@
             });
         });
     });
-</script>
+</script> #}
 
 
 {% endblock %}
