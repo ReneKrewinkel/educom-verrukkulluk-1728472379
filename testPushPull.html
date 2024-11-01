@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/style_test.css" />
+
+    <script src="js/jquery.js"></script>
+    <script>
+      $(document).ready(function () {
+        /////////////////////////////////////////////////
+        // Gemiddelde als default weer- en terug geven //
+        /////////////////////////////////////////////////
+
+        // Past de sterren aan
+        function setStars(rating) {
+          $(".star").each(function(index) {
+            if (index < rating) {
+              $(this).addClass("red");
+            } else {
+              $(this).removeClass("red");
+            }
+          })
+        }
+
+        // Haalt het gemiddelde op en past sterren aan
+        function loadAverageRating() {
+          $.ajax({
+            url: "testPull.php",
+            method: "GET",
+            success: function(avgResponse) {
+              var averageRating = Math.floor(parseFloat(avgResponse))
+              setStars(averageRating);
+            }
+          })
+        }
+
+        loadAverageRating();
+      
+        ////////////////////
+        // Rating ingeven //
+        ////////////////////
+        $(".star").click(function () {
+          const starValue = $(this).attr("data-value");
+
+          // Clear all the red stars
+          $(".star").removeClass("red");
+
+          // Paint it red!
+          $(".star").each((index, elem) => {
+            const itemValue = $(elem).attr("data-value");
+            if (itemValue <= starValue) {
+              $(elem).addClass("red");
+            }
+          });
+        
+          $.ajax({
+            url: "testPush.php",
+            method: "POST",
+            data: { rating: starValue},
+            success: function(response) {
+              console.log("POST Success:", response);
+              $.ajax({
+                url: "testPull.php",
+                method: "GET",
+                success: function(response) {
+                  console.log("GET Success:", response);
+                  loadAverageRating();
+                  $("#response").html("Gemiddelde Rating: " + response);
+                } 
+              })
+            }
+          });
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <span class="star" data-value="1"> * </span>
+    <span class="star" data-value="2"> * </span>
+    <span class="star" data-value="3"> * </span>
+    <span class="star" data-value="4"> * </span>
+    <span class="star" data-value="5"> * </span>
+
+    <!-- <input type = "text" id = "inputField" placeholder = "Geef je waarde in">  -->
+    <!-- <button id = "getAverage" class = "btn btn-primary mt-3"> get average </button> -->
+    <div id = "response" class = "mt-3"> </div> <!-- margin top 3 -->
+  </body>
+</html>

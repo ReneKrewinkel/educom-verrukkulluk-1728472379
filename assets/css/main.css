@@ -300,6 +300,7 @@ a {
   color: none;
 }
 
+/* TABS */
 .tab-pane {
     border: 1px solid black;
     height: 1010px;
@@ -310,7 +311,6 @@ a {
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
 }
 
-
 .nav-style {
     border: 1px solid black; 
     -webkit-box-shadow: 0px 0px 15px -7px rgba(0, 0, 0, 0.6); /* voor Safari */
@@ -320,3 +320,17 @@ a {
     border-bottom: #FFf;
 }
 
+/* TEST CASE, TO BE ADDEPTED AND/OR DELETED */
+.star {
+    font-size: 30px;
+    color: #000;
+    cursor: pointer;
+    width: 50px;
+}
+
+.star:hover {
+    color: #F00;
+}
+.red {
+    color: #F00 ;
+}
