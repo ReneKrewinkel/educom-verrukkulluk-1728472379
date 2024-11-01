@@ -14,8 +14,7 @@
         <li data-slide-to="2" data-target="#carousel-254962"></li>
     </ol>
 
-    <div class="carousel-inner container" {# Carosel Items #}
-         style = "border: 0px;"> 
+    <div class="carousel-inner container"> {# Carosel Items #}
         <div class="carousel-item active"> {# Carosel Item 1 #}
             <div style="align-items: center;
                         width: 1500;
@@ -92,94 +91,85 @@
 <div class="container-fluid "> {# gerecht-tegels #}
     <div class = "row">
         {% for record in data %}
-            <div class = "col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> {# Geeft alle info van een specifiek gerecht #}
-                <div class = "cell"> 
-                    <div class = "image-container" {# afbeelding gerecht #}
-                         style="background-image: url('{{ record.recipe.afbeelding }}')">
+            <div class = "col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> {# info gerecht #}
+                <div class = "shadow" style = "padding: 20px; height: 500px;"> 
+                    <div class = "background-container background-style" {# afbeelding gerecht #}
+                         style= "background-image: url('{{ record.recipe.afbeelding }}')">
                     </div>
                     <div class = "row"> {# title and rating #}
                         <div class = "col-7 col-sm-9 col-md-9 col-lg-8 col-xl-9"> {# title #}
-                            <h1 class = "text-with-dots"> {{ record.recipe.titel }} </h1>
+                            <h1 class = "text-with-dots" style = "color: var(--darker-green);"> {{ record.recipe.titel }} </h1>
                         </div>
                         <div class = "col-4 col-sm-3 col-md-3 col-lg-4 col-xl-3"> {# rating #}
-                            {% if record.rating < 0.5 %}
-                                <h6 class = "menu-container"> 
+                            <h6 class = "vertical-center">
+                                {% if record.rating < 0.5 %}
                                      <i class="goldenrod fa-regular fa-star"></i>
                                      <i class="goldenrod fa-regular fa-star"></i>
                                      <i class="goldenrod fa-regular fa-star"></i>
                                      <i class="goldenrod fa-regular fa-star"></i>
-                                     <i class="goldenrod fa-regular fa-star"></i> </h6>
-                            {% elseif record.rating < 1 %}
-                                <h6 class = "menu-container"> 
+                                     <i class="goldenrod fa-regular fa-star"></i> 
+                                {% elseif record.rating < 1 %}
                                      <i class="goldenrod fa-regular fa-star-half-stroke"></i>
                                      <i class="goldenrod fa-regular fa-star"></i>
                                      <i class="goldenrod fa-regular fa-star"></i>
                                      <i class="goldenrod fa-regular fa-star"></i>
-                                     <i class="goldenrod fa-regular fa-star"></i> </h6>
-                            {% elseif record.rating < 1.5 %}
-                                <h6 class = "menu-container"> 
+                                     <i class="goldenrod fa-regular fa-star"></i> 
+                                {% elseif record.rating < 1.5 %}
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-regular fa-star"></i>
                                      <i class="goldenrod fa-regular fa-star"></i>
                                      <i class="goldenrod fa-regular fa-star"></i>
-                                     <i class="goldenrod fa-regular fa-star"></i> </h6>
-                            {% elseif record.rating < 2 %}
-                                <h6 class = "menu-container"> 
+                                     <i class="goldenrod fa-regular fa-star"></i> 
+                                {% elseif record.rating < 2 %}
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-regular fa-star-half-stroke"></i>
                                      <i class="goldenrod fa-regular fa-star"></i>
                                      <i class="goldenrod fa-regular fa-star"></i>
-                                     <i class="goldenrod fa-regular fa-star"></i> </h6>
-                            {% elseif record.rating < 2.5 %}
-                                <h6 class = "menu-container">
+                                     <i class="goldenrod fa-regular fa-star"></i> 
+                                {% elseif record.rating < 2.5 %}
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-regular fa-star"></i>
                                      <i class="goldenrod fa-regular fa-star"></i>
-                                     <i class="goldenrod fa-regular fa-star"></i> </h6>
-                            {% elseif record.rating < 3 %}
-                                <h6 class = "menu-container">
+                                     <i class="goldenrod fa-regular fa-star"></i> 
+                                {% elseif record.rating < 3 %}
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-regular fa-star-half-stroke"></i>
                                      <i class="goldenrod fa-regular fa-star"></i>
-                                     <i class="goldenrod fa-regular fa-star"></i> </h6>
-                            {% elseif record.rating < 3.5 %}
-                                <h6 class = "menu-container">
+                                     <i class="goldenrod fa-regular fa-star"></i> 
+                                {% elseif record.rating < 3.5 %}
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-regular fa-star"></i>
-                                     <i class="goldenrod fa-regular fa-star"></i> </h6>
-                            {% elseif record.rating < 4 %}
-                                <h6 class = "menu-container">
+                                     <i class="goldenrod fa-regular fa-star"></i> 
+                                {% elseif record.rating < 4 %}
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-regular fa-star-half-stroke"></i>
-                                     <i class="goldenrod fa-regular fa-star"></i> </h6>
-                            {% elseif record.rating < 4.5 %}
-                                <h6 class = "menu-container">
+                                     <i class="goldenrod fa-regular fa-star"></i> 
+                                {% elseif record.rating < 4.5 %}
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-solid fa-star"></i>
-                                     <i class="goldenrod fa-regular fa-star"></i> </h6>
-                            {% elseif record.rating < 5 %}
-                                <h6 class = "menu-container">
+                                     <i class="goldenrod fa-regular fa-star"></i> 
+                                {% elseif record.rating < 5 %}
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-solid fa-star"></i>
-                                     <i class="goldenrod fa-regular fa-star-half-stroke"></i> </h6>
-                            {% else %}
-                                <h6 class = "menu-container">
+                                     <i class="goldenrod fa-regular fa-star-half-stroke"></i> 
+                                {% else %}
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-solid fa-star"></i>
                                      <i class="goldenrod fa-solid fa-star"></i>
-                                     <i class="goldenrod fa-solid fa-star"></i> </h6>
-                            {% endif %}
+                                     <i class="goldenrod fa-solid fa-star"></i> 
+                                {% endif %}
+                            </h6>
                         </div>
                     </div>
                     <div class = "fading-content" {# korte omschrijving #}
@@ -188,11 +178,12 @@
                     </div>
                     <div class = "row"> {# button and other info #}
                         <div class = "col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6"> {# button #}
-                            <div class = "button-container">
-                                <a href = "http://localhost/educom-verrukkulluk/index_2.php?recipe_id={{ record.recipe.id }}&action=detail"> Smullen! </a>
+                            <div class = "button">
+                                <a style = "background-color: #f00;" href = "http://localhost/educom-verrukkulluk/index_2.php?recipe_id={{ record.recipe.id }}&action=detail"> Smullen! </a>
                             </div>
                         </div>
-                        <div class = "col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 subcel"> {# other info #}
+                        <div class = "col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" {# other info #}
+                             style = "text-align: center; border-radius: 40px;"> 
                             <div class = "row">
                                 <div class = "col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4"> {# user #}
                                     <p> <i class = "fa-solid fa-user-group red"></i> 4 </p>

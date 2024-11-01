@@ -6,11 +6,8 @@
 </pre> #}
 
 <div class = "cel" style = "background-color: var(--lighter-orange);">
-    <div class = "image-container" {# afbeelding gerecht #}
-         style = "margin-top: 10px;
-                  margin-left: -10px;
-                  margin-right: -10px;
-                  height: 500px;
+    <div class = "background-container" {# afbeelding gerecht #}
+         style = "height: 500px;
                   background-image: url('{{ data.0.recipe.afbeelding }}')">
         <div class = "floating-container" {# logo #}
              style = "align-items: center;
@@ -138,21 +135,12 @@
     <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
     </div>
     <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10"> 
-        <div class="row" {# RECEPTINFORMATIE #}
-             style = "border: 1px solid black;
-                    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
-                    -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
-                    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);"> 
-            <div class="col-6 col-md-6 col-lg-6 subcell"> {# Gerecht foto #}
-                <div class = "cell"
-                    style="
-                    margin-left: -15px;
-                    background-image: url('{{ data.0.recipe.afbeelding }}');
-                    background-size: cover;
-                    height: 100%">
-                </div>
+        <div class="row shadow"> {# RECEPTINFORMATIE #} 
+            <div class = "col-2 col-sm-3 col-md-4 col-lg-5 col-xl-6 background-container" {# Gerecht foto #}
+                 style = "background-image: url('{{ data.0.recipe.afbeelding }}'); "> 
             </div>
-            <div class="col-6 col-md-6 col-lg-6"> {# Gerecht informatie #}
+
+            <div class="col-10 col-sm-9 col-md-8 col-lg-7 col-xl-6"> {# Gerecht informatie #}
                 <br>
                 <div class="row"> {# People, Price and Calories #}
                     <div class = "col-6 col-md-6 col-lg-6"> 
@@ -170,10 +158,8 @@
                     </div>
                 </div>    
                 <div class="row"> {# Title and Rating #}
-                    <div class = "col-7 col-md-7 col-lg-7"> {# Title #}
-                        <h1 style = "color: var(--darker-green)"> 
-                            {{ data.0.recipe.titel }} 
-                        </h1>
+                    <div class = "col-7 col-md-7 col-lg-7" style = "color: var(--darker-green)"> {# Title #}
+                        <h1> {{ data.0.recipe.titel }} </h1>
                     </div>
                     <div class = "col-5 col-md-5 col-lg-5 text-right"> {# Rating #}
                         <span class = "goldenrod fa-regular fa-star" style = "font-size: 30px" data-value = "1">  </span>
@@ -215,8 +201,8 @@
                 </div>
                 <div class="row"> {# Knop en Favoriet #}
                     <div class = "col-6 col-md-6 col-lg-6"> {# Knop #}
-                        <div class = "button-container">
-                            <a href = "http://localhost/educom-verrukkulluk/index_2.php"> Op lijst </a>
+                        <div class = "button">
+                            <a style = "background-color: #f00;" href = "http://localhost/educom-verrukkulluk/index_2.php"> Op lijst </a>
                         </div>
                     </div>
                     <div class = "col-6 col-md-6 col-lg-6 text-right"> {# Favoriet #}
@@ -235,38 +221,37 @@
             <br>
         </div>
 
-        <div class = "row"> {# TABS: button boven tabs zetten, border-bottom: transparent, twee vlakken die over de uitstekende left en right border vallen #}
+        <div class = "row"> {# TABS #}
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12" >
                         <div class="tabbable" id="tabs-931226">
                             <ul class="nav nav-tabs"> {# Dit zorgt voor de titels in de knoppen #}
-                                {# kan nav-item aangepast worden? -> kan maar is niet goed, nieuw classe voor de style maken #}
-                                <li class="nav-item nav-style" style = "margin-bottom: -1px;"> {# Ingrediënten #}
+                                <li class="nav-item nav-style shadow"> {# Ingrediënten #}
                                     <a class="nav-link active" href="#tab1" data-toggle="tab">
                                         <h3 style = "color: var(--darker-green)"> Ingrediënten </h3>
                                     </a>
                                 </li>
-                                <li class="nav-item nav-style" style = "margin-bottom: -1px;" > {# Bereidingswijze #}
+                                <li class="nav-item nav-style shadow"> {# Bereidingswijze #}
                                     <a class="nav-link" href="#tab2" data-toggle="tab" >
                                         <h3 style = "color: var(--darker-green)"> Bereidingswijze </h3> 
                                     </a>
                                 </li>
-                                <li class="nav-item nav-style" style = "margin-bottom: -1px;"> {# Opmerkingen #}
+                                <li class="nav-item nav-style shadow"> {# Opmerkingen #}
                                     <a class="nav-link" href="#tab3" data-toggle="tab"> 
                                          <h3 style = "color: var(--darker-green)"> Opmerkingen </h3> 
                                     </a>
                                 </li>
                             </ul>
                             <div class="tab-content"> {# Inhoud #}
-                                <div class="tab-pane active" id="tab1"> {# Ingridiënten #}
-                                    <div class = "row overlap-intersection">
+                                <div class="tab-pane shadow active" id="tab1"> {# Ingridiënten #}
+                                    <div class = "row"> {# white space #}
                                         <br>
                                     </div>
-                                    <div class = "row">
+                                    <div class = "row"> {# content #}
                                         {% for ingridient in data.0.ingridients %}
                                             <div class = "row">
-                                                <div class = "col-md-1">
+                                                <div class = "col-md-1">    {# White space #}
                                                 </div>
                                                 <div class = "col-md-2">    {# Foto #}
                                                     <p> Foto </p>
@@ -294,15 +279,15 @@
                                         {% endfor %}
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="tab2"> {# Bereidingswijze #}
+                                <div class="tab-pane shadow" id="tab2"> {# Bereidingswijze #}
                                     <div class = "row"> {# white space #} 
                                         <br>                             
                                     </div>
                                     <div class = "row"> {# bereidingswijze #}
                                         {% for step in data.0.steps %}
                                             <div class = "row">
-                                                <div class = "col-md-2" style = "float: right">    {# Enumeration #}
-                                                    <p class = "circle-opsomming"> {{ loop.index0 + 1}}. </p> 
+                                                <div class = "col-md-2 horizontal-center">    {# Enumeration #}
+                                                    <p class = "circle-opsomming horizontal-center"> {{ loop.index0 + 1}}. </p> 
                                                 </div>
                                                 <div class = "col-md-10">   {# Stap #}
                                                     <p> {{step|nl2br}} </p>
@@ -311,7 +296,7 @@
                                         {% endfor %}
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="tab3"> {# Opmerkingen #}
+                                <div class="tab-pane shadow" id="tab3"> {# Opmerkingen #}
                                     <div class = "row"> {# white space #}
                                         <br>                             
                                     </div>
@@ -343,9 +328,9 @@
                 </div>
             </div>
         </div>
-
     </div>
 
+    {# kan weg worden gehaalt, vooral voor completion erbij gehouden #}
     <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
     </div>
 </div>
