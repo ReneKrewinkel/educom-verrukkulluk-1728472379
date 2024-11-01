@@ -3,7 +3,6 @@
 {% block header %}
 {# <pre>
 {{ dump(data)}}
-?recipe_id=2&action=detail
 </pre> #}
 
 <div class = "cel" style = "background-color: var(--lighter-orange);">
@@ -33,12 +32,9 @@
 
 <script> /* Voor de rating van de sterren, wordt alleen nog nergens opgeslagen */
     $(document).ready(function() { // Rating and Favorite, Hover and Click
-        /////////////////////////////////////////////////
-        // Gemiddelde als default weer- en terug geven //
-        /////////////////////////////////////////////////
         
-        // Past de sterren aan
-        function setStars(rating) {
+        // Average rating //
+        function setStars(rating) { // Past de sterren aan naar average
             $(".fa-star").each(function(index) {
                 if (index < rating) {
                 $(this).addClass("red");
@@ -47,29 +43,10 @@
                 }
             })
         }
-    /*
-        // Haalt het gemiddelde op en past sterren aan
-        
-         function loadAverageRating() {
-            $.ajax({
-                url: "index_2.php?action=test",
-                method: "GET",
-                success: function(avgResponse) {
-                    // console.log("Average rating fetched:", avgResponse);
-                    var averageRating = Math.floor(parseFloat(avgResponse))
-                    setStars(averageRating);
-                    $("#response").html("Gemiddelde Rating: " + avgResponse);
-                },
-                error: function(xhr, status, error) {
-                    console.error("Error fetching average rating: " + error);
-                }
-            })
-        } 
-
-        loadAverageRating(); 
-    */
-        // Rating ingeven 
-        $(".fa-star").click(function () {
+    
+        setStars({{ data[0]["rating"]|round(0, 'floor') }})
+         
+        $(".fa-star").click(function () { // update rating invoeren en nieuwe average weergeven
             const starValue = $(this).attr("data-value");
 
             // Clear all the red stars
@@ -83,22 +60,26 @@
                 }
             });
             
-            // console.log("data?:", {{data.0.recipe.id}});
+            // Haal info op
             $.ajax({
                 url: "index_2.php?action=test&recipe_id={{data.0.recipe.id}}&rating=" + starValue,
                 method: "GET",
 
                 success: function(response) {
-                    var averageRating = Math.floor(parseFloat(response.averageRating));
-                    console.log(averageRating);
+                    console.log("Response.averageRating:", response.averageRating);
+                    console.log("Response.averageRating floot:", Math.floor(response.averageRating));
+                    console.log("");
+
+                    averageRating = Math.floor(response.averageRating);
                     setStars(averageRating);
-                    // console.log("AverageRating:", averageRating);
-                }
+                },
+                error: function(xhr, status, error) { console.error("Error:", error); }
             }); 
         });
         
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        // Rating geven //
         $(".fa-star").hover( // Hover function RATING 
             function () { // Enter hover RATING
                 const value = $(this).attr('data-value')
@@ -177,13 +158,13 @@
                     <div class = "col-6 col-md-6 col-lg-6"> 
                         <div class = "row">
                             <div class = "col-4 col-md-4 col-lg-4"> {# People #}
-                                <p> <i class = "fa-solid fa-user-group icon"></i> 4 </p>
+                                <p> <i class = "fa-solid fa-user-group red"></i> 4 </p>
                             </div>
                             <div class = "col-4 col-md-4 col-lg-4"> {# Price #}
-                                <p> <i class = "fa-solid fa-euro-sign icon"></i> {{data.0.price|round(2)}} </p>
+                                <p> <i class = "fa-solid fa-euro-sign red"></i> {{data.0.price|round(2)}} </p>
                             </div>
                             <div class = "col-4 col-md-4 col-lg-4"> {# Calories #}
-                                <p> <i class = "fa-solid fa-fire icon"></i> {{ data.0.calories|round(0) }} </p> 
+                                <p> <i class = "fa-solid fa-fire red"></i> {{ data.0.calories|round(0) }} </p> 
                             </div>
                         </div>
                     </div>
@@ -195,11 +176,11 @@
                         </h1>
                     </div>
                     <div class = "col-5 col-md-5 col-lg-5 text-right"> {# Rating #}
-                        <span class = "icon_2 fa-regular fa-star" style = "font-size: 30px" data-value = "1">  </span>
-                        <span class = "icon_2 fa-regular fa-star" style = "font-size: 30px" data-value = "2">  </span>
-                        <span class = "icon_2 fa-regular fa-star" style = "font-size: 30px" data-value = "3">  </span>
-                        <span class = "icon_2 fa-regular fa-star" style = "font-size: 30px" data-value = "4">  </span>
-                        <span class = "icon_2 fa-regular fa-star" style = "font-size: 30px" data-value = "5">  </span>
+                        <span class = "goldenrod fa-regular fa-star" style = "font-size: 30px" data-value = "1">  </span>
+                        <span class = "goldenrod fa-regular fa-star" style = "font-size: 30px" data-value = "2">  </span>
+                        <span class = "goldenrod fa-regular fa-star" style = "font-size: 30px" data-value = "3">  </span>
+                        <span class = "goldenrod fa-regular fa-star" style = "font-size: 30px" data-value = "4">  </span>
+                        <span class = "goldenrod fa-regular fa-star" style = "font-size: 30px" data-value = "5">  </span>
                     </div>
                 </div> 
                 <div class="row" style = "align-items: center;"> {# Keuken en Type #}
@@ -240,7 +221,7 @@
                     </div>
                     <div class = "col-6 col-md-6 col-lg-6 text-right"> {# Favoriet #}
                         <h1> 
-                            <span class = "icon_2 fa-regular fa-heart" style = "font-size: 30px; color: var(--lighter-red)">  </span>
+                            <span class = "fa-regular fa-heart" style = "font-size: 30px; color: var(--lighter-red)">  </span>
                         </h1>
                     </div>
                 </div> 
@@ -314,14 +295,14 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tab2"> {# Bereidingswijze #}
-                                    <div class = "row">
+                                    <div class = "row"> {# white space #} 
                                         <br>                             
                                     </div>
-                                    <div class = "row">
+                                    <div class = "row"> {# bereidingswijze #}
                                         {% for step in data.0.steps %}
                                             <div class = "row">
-                                                <div class = "col-md-2 circle">    {# Enumeration #}
-                                                    <p> {{ loop.index0 }}. </p> 
+                                                <div class = "col-md-2" style = "float: right">    {# Enumeration #}
+                                                    <p class = "circle-opsomming"> {{ loop.index0 + 1}}. </p> 
                                                 </div>
                                                 <div class = "col-md-10">   {# Stap #}
                                                     <p> {{step|nl2br}} </p>
@@ -331,14 +312,14 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tab3"> {# Opmerkingen #}
-                                    <div class = "row">
+                                    <div class = "row"> {# white space #}
                                         <br>                             
                                     </div>
-                                    <div class = "row">
+                                    <div class = "row"> {# user info #}
                                         {% for remark in data.0.remarks %}
                                             <div class = "row">
                                                 <div class = "col-md-2"> {# afbeelding user #}
-                                                    <div class = "circle" 
+                                                    <div class = "circle-user" 
                                                         style="background-image: url('{{ remark.afbeelding }}')">
                                                     </div>
                                                 </div>

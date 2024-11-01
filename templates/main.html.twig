@@ -8,21 +8,13 @@
     <link rel="stylesheet" type="text/css" href="assets/css/fonts.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/fontawesome.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
-    {# <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> #}
 
     <script type="text/javascript" language="javascript" src="assets/jquery/jquery-3.5.1.js"></script>
-    {# <script type="text/javascript" language="javascript" src="assets/bootstrap/js/bootstrap.js"></script> #}
-    {# <script src="https://kit.fontawesome.com/ce8cf83f30.js" crossorigin="anonymous"></script> #}
-    {# <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>  #}
-    {# <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script> #}
-    {# <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  #}
-    {# <script src="js/jquery.js"></script> #}
 
 </html>
 <body>
 
 <div class="container-fluid">
-
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         {% block header %}
@@ -65,9 +57,6 @@
 
         <script> /* Voor het zichtbaar en onzichtbaar maken van het menu */
             {# voor het zichtbaar maken van de menu wanneer op de knop wordt geklikt #}
-            
-            // DEZE WEER UNCOMMENTEN
-            
             document.getElementById('menu-trigger').addEventListener('click', function() {
                 document.getElementById('menu').classList.toggle('visible');
             })
@@ -84,107 +73,125 @@
                 }
             })
         </script>
+    </div>
+</div>
+
+<div class="row">
+    <br>
+</div>
+
+<div class="row"> {# content #}
+    <div class="col-5 col-sm-5 col-md-4 col-lg-4 col-xl-3"> {# agenda and login #}
+        <div class = "row"> {# agenda #}
+            <div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11"> {# agenda and login #}
+                <div style = 
+                    "background-color: var(--lighter-green);
+                    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
+                    -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
+                    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);">
+
+                    <div style = "text-align: center;"> {# white space #}
+                        <br>
+                        <img src="assets/img/verrukkulluk-agenda.png" style="height: 70px;"/>
+                        <br><br>
+                    </div>
+                    <div class = "row"> {# item 1 #}
+                        {# icon #}
+                        <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style = "text-align: center"> 
+                            <h3>  <i class="fa fa-calendar white" style = "margin-right: -10px"></i> </h3>
+                        </div>
+
+                        {# content #}
+                        <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                            <h3> Vegetarisch koken </h3>
+                            <p style = "margin-top: -10px"> 
+                                Voor mensen die geinteresseerd zijn in vegetarisch eten, Save The Date!
+                                Een workshop vegetarisch koken, onder leiding van John Doe staat ingepland.
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "row"> {# item 2 #}
+                        {# icon #}
+                        <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style = "text-align: center">
+                            <h3>  <i class="fa fa-calendar white" style = "margin-right: -10px"></i> </h3>
+                        </div>
+
+                        {# content #}
+                        <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                            <h3> Veganistisch koken </h3>
+                            <p style = "margin-top: -10px"> 
+                                Leven van wat het land te bieden heeft. 
+                                Wie een keer volledig veganistisch wil koken kan zich aanmelden voor de workshop, onder leiding van Jane Doe 
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "row"> {# item 3 #}
+                        {# icon #}
+                        <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style = "text-align: center">
+                            <h3>  <i class="fa fa-calendar white" style = "margin-right: -10px"></i> </h3>
+                        </div>
+
+                        {# content #}
+                        <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                            <h3> Italiaans koken </h3>
+                            <p style = "margin-top: -10px"> 
+                                Ooit afgevraagd wat de mensen in die mario games graag eten?
+                                Dan is de workshop italiaans koken voor jou weggelegd,
+                                gegeven door niemand minder dan Mario van Mario Bros.  
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "row"> {# item 4 #}
+                        {# icon #}
+                        <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style = "text-align: center">
+                            <h3>  <i class="fa fa-calendar white" style = "margin-right: -10px"></i> </h3>
+                        </div>
+
+                        {# content #}
+                        <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                            <h3> Frans koken </h3>
+                            <p style = "margin-top: -10px"> 
+                                Frans, de taal van de liefde, maar is het eten net zo romantisch?
+                                Kom erachter tijdens een workshop Frans koken, onder leiding van de enige echte Paul Bocuse.
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "row"> {# item 5 #}
+                        {# icon #}
+                        <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style = "text-align: center">
+                            <h3>  <i class="fa fa-calendar white" style = "margin-right: -10px"></i> </h3>
+                        </div>
+
+                        {# content #}
+                        <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                            <h3> Japans koken </h3>
+                            <p style = "margin-top: -10px"> 
+                                Als men denkt aan een land met sterke werkethiek en lange werkuren, dan denkt men aan Japan.
+                                Leer wat ze op de been houd tijdens de workshop japans koken, onder leiding van Soma Yukihira.
+                            </p>
+                        </div>
+                    </div>
+                            {# <i class="fa fa-calendar"></i> FontAwesome <a href="https://fontawesome.com/icons?d=gallery&m=free">Documentation</a><br>
+                            <i class="fa fa-file-pdf"></i><a href="https://www.layoutit.com/build">Layout-it</a>
+                            <p> Vegetarisch koken </p> #}
+                </div>
         </div>
-    </div>
-    <div class="row">
-        <p> <br> </p>
-    </div>
-    <div class="row">
-        <div class="col-5 col-sm-5 col-md-4 col-lg-4 col-xl-3"> {# agenda #}
+        <div class="row"> {# white space #}
+            <br>
+        </div>
+        <div class="row"> {# login #}
             <div style = 
-            "background-color: var(--lighter-green);
-             -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
-             -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
-             box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);">
-
-                <div style = "text-align: center;">
-                    <br>
-                    <img src="assets/img/verrukkulluk-agenda.png" style="height: 70px;"/>
-                    <br><br>
-                </div>
-                <div class = "row">
-                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style = "text-align: right">
-                        <h3>  <i class="fa fa-calendar icon-calander" style = "margin-right: -10px"></i> </h3>
-                    </div>
-                    <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                        <h3> Vegetarisch koken </h3>
-                        <p style = "margin-top: -10px"> 
-                            Voor mensen die geinteresseerd zijn in vegetarisch eten, Save The Date!
-                            Een workshop vegetarisch koken, onder leiding van John Doe staat ingepland.
-                        </p>
-                    </div>
-                </div>
-                <div class = "row">
-                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style = "text-align: right">
-                        <h3>  <i class="fa fa-calendar icon-calander" style = "margin-right: -10px"></i> </h3>
-                    </div>
-                    <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                        <h3> Veganistisch koken </h3>
-                        <p style = "margin-top: -10px"> 
-                            Leven van wat het land te bieden heeft. 
-                            Wie een keer volledig veganistisch wil koken kan zich aanmelden voor de workshop, onder leiding van Jane Doe 
-                        </p>
-                    </div>
-                </div>
-                <div class = "row">
-                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style = "text-align: right">
-                        <h3>  <i class="fa fa-calendar icon-calander" style = "margin-right: -10px"></i> </h3>
-                    </div>
-                    <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                        <h3> Italiaans koken </h3>
-                        <p style = "margin-top: -10px"> 
-                            Ooit afgevraagd wat de mensen in die mario games graag eten?
-                            Dan is de workshop italiaans koken voor jou weggelegd,
-                            gegeven door niemand minder dan Mario van Mario Bros.  
-                        </p>
-                    </div>
-                </div>
-                <div class = "row">
-                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style = "text-align: right">
-                        <h3>  <i class="fa fa-calendar icon-calander" style = "margin-right: -10px"></i> </h3>
-                    </div>
-                    <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                        <h3> Frans koken </h3>
-                        <p style = "margin-top: -10px"> 
-                            Frans, de taal van de liefde, maar is het eten net zo romantisch?
-                            Kom erachter tijdens een workshop Frans koken, onder leiding van de enige echte Paul Bocuse.
-                        </p>
-                    </div>
-                </div>
-                <div class = "row">
-                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style = "text-align: right">
-                        <h3>  <i class="fa fa-calendar icon-calander" style = "margin-right: -10px"></i> </h3>
-                    </div>
-                    <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                        <h3> Japans koken </h3>
-                        <p style = "margin-top: -10px"> 
-                            Als men denkt aan een land met sterke werkethiek en lange werkuren, dan denkt men aan Japan.
-                            Leer wat ze op de been houd tijdens de workshop japans koken, onder leiding van Soma Yukihira.
-                        </p>
-                    </div>
-                </div>
-
-                <i class="fa fa-calendar"></i> FontAwesome <a href="https://fontawesome.com/icons?d=gallery&m=free">Documentation</a><br>
-                <i class="fa fa-file-pdf"></i><a href="https://www.layoutit.com/build">Layout-it</a>
-                <p> Vegetarisch koken </p>
-            </div>
-            <div>
-                <br>
-            </div>
-            <div style = {# login #}
                     "background-color: var(--darker-red);
-                     -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
-                     -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
-                     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);">
+                    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
+                    -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
+                    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);">
 
-                <div style = "text-align: center;">
+                <div style = "text-align: center;"> {# white space #}
                     <br>
                     <img src="assets/img/verrukkulluk-login.png" style="height: 70px;"/>
                     <br><br>
                 </div>
-
-                <div class = "row">
-                    <!-- Mail input-->
+                <div class = "row"> {# mail input #}
                     <div class="form-group">
                         <label class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 control-label" for="textinput" style = "margin-left: 30px"> E-mail </label>
                         <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10" style = "margin-left: 30px">
@@ -192,8 +199,7 @@
                         </div>
                     </div>
                 </div>
-                <div class = "row">
-                    <!-- Password input-->
+                <div class = "row"> {# password input #}
                     <div class="form-group">
                         <label class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 control-label" style = "margin-left: 30px" for="Wachtwoord">Wachtwoord</label>
                         <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10" style = "margin-left: 30px">
@@ -201,66 +207,64 @@
                         </div>
                     </div>
                 </div>
-                <div class = "row">
+                <div class = "row"> {# white space #}
                     <br> <br>
                 </div>
-                <div class = "button-login-container">
+                <div class = "button-login-container"> {# button #}
                     <div class = "button-login">
                         <a href = "http://localhost/educom-verrukkulluk/index_2.php"> Login </a>
                     </div>
                 </div>
-                <div class = "row">
+                <div class = "row"> {# white space #}
                     <br> 
                 </div>
             </div>
         </div>
-        <div class="col-7 col-sm-7 col-md-8 col-lg-8 col-xl-9"> {# content #}
-            {# <h2>Content</h2> #}
-            {%  block content %}
-            {%  endblock %}
-        </div>
+    </div>
+    
+    <div class="col-7 col-sm-7 col-md-8 col-lg-8 col-xl-9"> {# content #}
+        {%  block content %}
+        {%  endblock %}
     </div>
 
-
-    <div class="row">
+    <div class="row"> {# white space #} 
         <br><br>
     </div>
-    <div class="row" style = {# contact #}
-                    "background-color: var(--lighter-orange);
-                     -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
-                     -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
-                     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        {% block footer %}
-            <div class="row">
-                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style = "text-align: center;">
-                    <br>
-                    <img src="assets/img/verrukkulluk-pay-off.png" style="height:150px;"/>
-                </div>
-                <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                    <br><br>
-                    <img src="assets/img/verrukkulluk-contact.png" style="height: 70px;"/>
-                    <p style = "color: #FFF"> 
-                        Verrukkeluk.nl <br>
-                        Poststraat 2b <br>
-                        Sittard <br>
-                        info@verrukkelluk.nl </p>
-                </div>
-            </div>
-        
-        {% endblock %}   
-        <br><br>
-        </div>
-    </div>
-
 </div>
 
-{# <script type="text/javascript" language="javascript" src="assets/jquery/jquery-3.5.1.js"></script> #}
+<div class="row" 
+     style = {# contact #}
+        "background-color: var(--lighter-orange);
+         -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
+         -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
+         box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            {% block footer %}
+                <div class="row">
+                    {# Logo #}
+                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style = "text-align: center;">
+                        <br>
+                        <img src="assets/img/verrukkulluk-pay-off.png" style="height:150px;"/>
+                    </div>
+
+                    {# content #}
+                    <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                        <br><br>
+                        <img src="assets/img/verrukkulluk-contact.png" style="height: 70px;"/>
+                        <p style = "color: #FFF"> 
+                            Verrukkeluk.nl <br>
+                            Poststraat 2b <br>
+                            Sittard <br>
+                            info@verrukkelluk.nl </p>
+                    </div>
+                </div>
+            {% endblock %}   
+            <br><br>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript" language="javascript" src="assets/bootstrap/js/bootstrap.js"></script>
 <script src="https://kit.fontawesome.com/ce8cf83f30.js" crossorigin="anonymous"></script>
-{# <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>  #}
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-{# <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  #}
-{# <script src="js/jquery.js"></script> #}
-
 </body>

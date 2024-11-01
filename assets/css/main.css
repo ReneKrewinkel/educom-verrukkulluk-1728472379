@@ -43,6 +43,7 @@ carousel-item img {
 }
 
 /** HEADING **/
+/* lettertype */
 h1,
 h2,
 h3,
@@ -51,6 +52,8 @@ h5,
 h6 {
   font-family: var(--heading) !important;
 }
+
+/* lettergrote */
 h1 {
   font-size: 52px;
 }
@@ -63,9 +66,24 @@ h5 {
   font-size: 32px;
 }
 
+/* kleuren */
+.goldenrod {
+  color: goldenrod;
+}
+
 .lightGreen {
   background-color: var(--lighter-green);
 }
+
+.red {
+  color: #F00 !important; /* anders worden de sterren niet rood bij average rating */
+}
+
+/* .icon-calander */
+.white {
+  color: #fff; /* Verandert de kleur van het pictogram */
+}
+
 
 /** HTML / BODY **/
 html,
@@ -74,33 +92,17 @@ body {
   font-size: 16px;
 }
 
-.circle {
-  display: flex;
-  /* width: auto;
-    height:auto; */
-  border-radius: 50%;
-  padding: 75px 75px;
-  background-size: cover;
-}
-
 /** BUTTON **/
 .button-container a {
   display: block;
   width: 110px;
   height: 50px;
-
-  /* margin-bottom: 10px;
-    left: 10px;  */
-  /* padding: 10px; */
-  background-color: #f00;
+  background-color: #f00;               /* eruithalen en .red toepassen? */
   color: #fff;
   font-family: var(--heading) !important;
   font-size: 32px;
   text-align: center;
-
   border-radius: 40px;
-
-  /* position: absolute; */
 }
 
 .button-login a {
@@ -124,9 +126,7 @@ body {
 
 /* CONTAINERS */
 .image-container {
-  /* display: flex; */
   justify-content: center;
-  /* object-fit: cover; */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -152,23 +152,15 @@ body {
   -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
-
   height: 500px;
-
-  /* position: relative; */
 }
 
 .subcel {
   text-align: center;
   border-radius: 40px;
-
-  /* position: absolute; */
-  /* bottom: 10px;
-    right: 10px; */
 }
 
-.container_2 {
-  /* Met grid? */
+.container_2 { /* Met grid, niet gebruikt? */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   background-color: #000;
@@ -178,9 +170,23 @@ body {
   grid-gap: 5px;
 }
 
+.circle-opsomming {
+  width: 50px;
+  height: 50px;
+  background-color: var(--lighter-orange);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+  /* line-height: 100px; */
+}
+
 /* MENU */
 .menu-container {
-  color: var(--lighter-red);
+  color: var(--lighter-red); /* eruithalen en .red gebruiken? */
   display: flex;
   align-items: center; /* Verticaal centreren */
   height: 100%; /* Zorg dat het element de volledige hoogte inneemt */
@@ -215,13 +221,13 @@ body {
   transition: all 0.4s ease;
 }
 
-.floating-container {
-  /* Zodat de knop altijd zichtbaar zal zijn */
-  /* position: fixed; */
+.floating-container {  /* Zodat de knop altijd zichtbaar zal zijn */
   top: 25px;
   right: 135px;
   padding: 10px;
 }
+
+
 
 /* ACHTERGROND? */
 .background-header {
@@ -245,62 +251,30 @@ a {
 }
 
 .fading-content {
-  /* width: 300px */
   margin-bottom: 5px;
   padding-bottom: 5px;
   max-height: 50px;
   overflow: hidden;
   text-overflow: ellipsis;
   content: "";
-  /* position:relative; */
 }
 
 .fading-content:after {
   content: "";
   width: 100%;
   height: 100%;
-  /* position: absolute; */
   left: 0;
   top: 0;
   background: linear-gradient(transparent 80px, #fff);
 }
 
-/* ICONS */
-.icon {
-  color: var(--lighter-red);
-}
-
-.icon-calander {
-  color: #fff; /* Verandert de kleur van het pictogram */
-}
-
-.icon-star {
-  color: goldenrod;  /* Verandert de kleur van het pictogram, icon 2 verwijderen? */
-}
-
-/* STAR */
-.star-rating {
-  display: flex;
-  direction: row;
-  justify-content: center;
-}
-
-/* verwijderen i.v.m. .icon-star? */
-.icon_2 {
-  color: goldenrod;
-}
-
+/*** STARS ***/
 /* elke class heeft inhoud nodig */
 .selected-icon {
   color: goldenrod; 
 }
 
-/* verwijderen omdat deze nergens is gebruikt? */
-.non-selected-icon {
-  color: none;
-}
-
-/* TABS */
+/*** TABS ***/
 .tab-pane {
     border: 1px solid black;
     height: 1010px;
@@ -320,17 +294,3 @@ a {
     border-bottom: #FFf;
 }
 
-/* TEST CASE, TO BE ADDEPTED AND/OR DELETED */
-.star {
-    font-size: 30px;
-    color: #000;
-    cursor: pointer;
-    width: 50px;
-}
-
-.star:hover {
-    color: #F00;
-}
-.red {
-    color: #F00 ;
-}

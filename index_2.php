@@ -53,11 +53,15 @@ switch($action) {
             if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['rating'])) {
                 
                 $rating = $_GET['rating'];
-                $averageRating = $BFOW -> addRating($gerecht_id, $rating);
+                $BFOW -> addRating($gerecht_id, $rating);
+
+                $data = $gerecht->selecteerRecipe($gerecht_id);
+                $averageRating = $data[0]["rating"];
+
+                // var_dump("After: ", $averageRating);
 
                 header('Content-Type: application/json; charset=utf-8');
                 echo json_encode(['averageRating' => $averageRating]);
-
             }
             die();
             break;
